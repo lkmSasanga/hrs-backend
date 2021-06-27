@@ -25,17 +25,17 @@ mongoose.connect(uri, {
     useUnifiedTopology: true,
 });
 
-// app.use(bodyParser.json({ limit: "50mb" }));
-// app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 
 app.get("/", function(req, res) {
     res.send("Welcome to API!");
 });
 
-// let v1 = require("./routes");
+let v1 = require("./routes");
 
-// app.use("/", v1.router);
+app.use("/", v1.router);
 
 app.use(function(req, res) {
     res.status(404).send({ url: req.originalUrl + " not found" });
