@@ -1,29 +1,29 @@
 const app = require("express")();
 const cors = require("cors");
 require("dotenv").config();
-// const bodyParser = require("body-parser");
-// const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 app.use(cors());
 
 const port = process.env.PORT || 5000;
 
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 
-// const connection = mongoose.connection;
-// connection
-//     .once("open", () => {
-//         console.log("MongoDB database connection established successfully");
-//     })
-//     .on("error", function(err) {
-//         console.log("Error", err);
-//     });
-// const uri = process.env.ATLAS_URI;
-// mongoose.connect(uri, {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true,
-// });
+const connection = mongoose.connection;
+connection
+    .once("open", () => {
+        console.log("MongoDB database connection established successfully");
+    })
+    .on("error", function(err) {
+        console.log("Error", err);
+    });
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+});
 
 // app.use(bodyParser.json({ limit: "50mb" }));
 // app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
